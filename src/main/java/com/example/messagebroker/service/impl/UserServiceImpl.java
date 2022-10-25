@@ -44,4 +44,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id).map(user -> modelMapper.map(user, UserDto.class))
                 .orElseThrow(() -> new UserNotFoundException("User with this id not found!"));
     }
+
+    @Override
+    public Long deleteUserById(Long id) {
+        userRepository.deleteById(id);
+        return id;
+    }
 }

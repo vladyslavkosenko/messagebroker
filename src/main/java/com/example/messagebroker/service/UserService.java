@@ -10,6 +10,6 @@ public interface UserService {
     long save(CreateUserDto user);
     List<User> getUsers();
     List<UserDto> getAllUsers();
-
     UserDto getById(Long id);
+    Long deleteUserById(Long id);
 }

@@ -20,13 +20,15 @@ public class UserController {
 
     @PostMapping("/user")
     @ResponseStatus(HttpStatus.CREATED)
-    public Long saveUser(@Validated @RequestBody CreateUserDto user){
-        return  userService.save(user);
+    public Long saveUser(@Validated @RequestBody CreateUserDto user) {
+        return userService.save(user);
     }
+
     @GetMapping("/get")
     public ResponseEntity<List<User>> getUsers() {
         return ResponseEntity.ok().body(userService.getUsers());
     }
+
     @GetMapping
     public List<UserDto> getAllUsers() {
         return userService.getAllUsers();
@@ -35,6 +37,12 @@ public class UserController {
     @GetMapping("/user/{id}")
     public UserDto getUserByUserId(@PathVariable Long id) {
         return userService.getById(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Long deleteUserById(@PathVariable Long id) {
+        return userService.deleteUserById(id);
     }
 }
 
